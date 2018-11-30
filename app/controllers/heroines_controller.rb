@@ -4,6 +4,19 @@ class HeroinesController < ApplicationController
     @powers = Power.all
   end
 
+  def search
+    @heroines = Heroine.all
+    @powers = Power.all
+
+    # :Parameters {"utf8"=>"✓",
+    #   "name"=>"super strength ",
+    #   "commit"=>"Search",
+    #   "controller"=>"heroines",
+    #   "action"=>"search"}
+    @power = Power.find_by(name: params[:name])
+    render :index
+  end
+
   def show
     @heroine = Heroine.find(params[:id])
   end
@@ -29,4 +42,5 @@ class HeroinesController < ApplicationController
   def heroine_params
     params.require(:heroine).permit(:name, :super_name, :power_id)
   end
+
 end
