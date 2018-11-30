@@ -1,0 +1,31 @@
+<h1>Create a new Heroine:</h1>
+
+<%= form_for @heroine do |f| %>
+  <div>
+    <%= f.label :name, "Your Heroine's Name:" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :super_name, "Your Heroine's Super Name:" %>
+    <%= f.text_field :super_name %>
+  </div>
+
+  <div>
+    <%= f.label :power_id, "Your Heroine's Power:" %>
+
+    <select name="heroine[power_id]">
+      <% @powers.each do |power| %>
+          <option value="<%= power.id %>"><%= power.name %></option>
+      <% end %>
+    </select>
+  </div> <br>
+
+  <%= f.submit %>
+<% end %>
+
+<% if @heroines.errors.any? %>
+  <% @heroines.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>
