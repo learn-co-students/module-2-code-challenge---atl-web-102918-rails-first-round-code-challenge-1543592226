@@ -1,0 +1,8 @@
+<h1> Check out this heroine</h1>
+
+<ul>
+  <li><%= @heroine.name %></li>
+  <li><%= @heroine.super_name %></li>
+  <li><%=link_to @heroine.power.name, power_path(@power) %></li>
+
+</ul>
